@@ -177,7 +177,7 @@ if (isset($_SESSION["admin"])) {
                                 <?php
 
                                 $freq_rs = Database::search("SELECT `products_id`,COUNT(`products_id`) AS `value_occurence` FROM `invoice` 
-                                WHERE r_status = '1' AND `date` LIKE '%" . $today . "%' GROUP BY `products_id` ORDER BY `value_occurence` DESC LIMIT 1");
+                                WHERE `status` = '1' AND `date` LIKE '%" . $today . "%' GROUP BY `products_id` ORDER BY `value_occurence` DESC LIMIT 1");
 
                                 $freq_num = $freq_rs->num_rows;
 
@@ -317,7 +317,7 @@ if (isset($_SESSION["admin"])) {
 
 } else {
 
-    header("Location: login.php");
+    header("Location: ../admin_signin.php");
 }
 
 ?>
