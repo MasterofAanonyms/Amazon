@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="bootstrap_files/bootstrap.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
+    <link rel="icon" href="resourcesofwebsiteimg/icon.svg" />
 
       <style>
         .form-container {
