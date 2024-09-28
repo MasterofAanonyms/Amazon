@@ -815,3 +815,21 @@ function addcolor() {
   request.open("POST", "addcolor.php", true);
   request.send(form);
 }
+
+function updatestatus(id){
+  let request = new XMLHttpRequest();
+
+  request.onreadystatechange = function () {
+      if (request.status == 200 && request.readyState == 4) {
+          let response = request.responseText;
+          if (response == "update") {
+              window.location.reload();
+          } else {
+              alert(response);
+          }
+      }
+  }
+
+  request.open("GET", "../updateInvoiceStatus.php?id=" + id, true);
+  request.send();
+}

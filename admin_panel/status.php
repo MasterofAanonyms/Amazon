@@ -4,15 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon.lk | Product status update</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../resourcesofwebsiteimg/icon.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+    <title>Amazon.lk | Admin Order Management</title>
 
-<style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../bootstrap_files/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="anim.css">
+    <!-- CSS -->
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- icons -->
+
+    <style>
     .table thead th {
         border-bottom: 2px solid #dee2e6;
     }
@@ -44,7 +48,8 @@
     }
 
     .fimg {
-        width: 20%;
+        width: 10%;
+        margin-right: 10px;
     }
 
     .user-info .added-date {
@@ -53,16 +58,25 @@
     }
 </style>
 </head>
-<body>
-    <?php include "adminNavBar.php"; ?>
+
+<?php
+
+session_start();
+
+include "connection.php";
+
+if (isset($_SESSION["admin"])) {
+
+    // include "admin-header.php";
+
+?>
+<?php include "adminNavBar.php"; ?>
+
 <br>
 <h1 class="text-center">Product Status</h1>
-
+    
 <div class="container my-3">
     <?php
-
-    if (isset($_SESSION["admin"])) {
-        $pageno;
     $email = $_SESSION["admin"]["email"];
 
     if (isset($_GET["page"])) {
@@ -233,20 +247,31 @@
     </ul>
 </nav>
 <?php
-    }}else{
-        ?>
-        <script></script>
-        <?php
     }
 ?>
 </div>
-<script src="../script.js">
-    window.location = "../admin_signin.php";
-</script>
-<script src="../script2.js"></script>
+
+    <!-- js -->
+    <script src="script.js"></script>
+    <script src="../script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
-</body>
+    <!-- js -->
+
+    <!-- js sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- js sweetalert -->
+    </body>
+
+<?php
+
+} else {
+
+    header("Location: ../admin_signin.php");
+}
+
+?>
+
 </html>
