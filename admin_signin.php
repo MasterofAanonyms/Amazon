@@ -135,7 +135,7 @@
                                 <input type="email" class="form-control" placeholder="ex : john@gmail.com" id="e" />
                             </div>
                             <div class="col-12 col-lg-6 d-grid">
-                                <button class="btn btn-secondary" onclick="adminVerification();">Send Verification Code</button>
+                                <button class="btn btn-secondary" onclick="adminVerification();"  id="myButton">Send Verification Code</button>
                             </div>
                             <div class="col-12 col-lg-6 d-grid">
                                 <a href="login.php" class="btn btn-outline-dark">Back to Customer Log In</a>

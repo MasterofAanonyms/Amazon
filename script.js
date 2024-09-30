@@ -105,6 +105,9 @@ function signin() {
 let forgotPasswordModal;
 
 function forgotPassword() {
+  let anchor = document.getElementById("myAnchor");
+  anchor.classList.add("disabled-link"); 
+             
   let email = document.getElementById("email2");
 
   let request = new XMLHttpRequest();
@@ -341,6 +344,10 @@ function sellerLogin() {
 
 let av;
 function adminVerification() {
+
+  var button = document.getElementById("myButton");
+            button.disabled = true; // Disable the button
+            button.classList.add("btn-lg", "btn-primary"); // Ensure button keeps Bootstrap styles
 
   let email = document.getElementById("e");
 

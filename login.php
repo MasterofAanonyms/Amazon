@@ -48,6 +48,12 @@
     .head {
       background-color: #000;
     }
+
+    .disabled-link {
+            pointer-events: none;
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
   </style>
 </head>
 
@@ -93,7 +99,7 @@
       <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="rememberme">
         <label class="form-check-label" for="rememberMe">Remember Me</label>
-        <a href="#" class="float-right offset-2" onclick="forgotPassword();">Forgot Password?</a>
+        <a href="#" class="float-right offset-2" onclick="forgotPassword();" id="myAnchor">Forgot Password?</a>
       </div><br>
       <a class="btn btn-warning btn-block col-12" onclick="signin();">Sign In</a>
 
@@ -162,7 +168,13 @@
   </footer>
 
   <?php require 'footer.php'; ?>
-
+  <script>
+    // Function to disable the anchor tag
+    function disableAnchor() {
+            var anchor = document.getElementById("myAnchor");
+            anchor.classList.add("disabled-link"); // Add the disabled-link class for styling
+        }
+  </script>
   <script src="script.js"></script>
   <script src="https://kit.fontawesome.com/f4e0ff3f68.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

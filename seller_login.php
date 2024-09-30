@@ -84,7 +84,7 @@
       <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="rememberMe">
         <label class="form-check-label" for="rememberMe">Remember Me</label>
-        <a href="#" class="float-right offset-2" onclick="forgotPassword();">Forgot Password?</a>
+        <a href="#" class="float-right offset-2" id="myAnchor" onclick="forgotPassword();">Forgot Password?</a>
       </div><br>
       <a class="btn btn-warning btn-block col-12" onclick="sellerLogin();">Sign In</a>
 
@@ -95,7 +95,8 @@
 
   </div><br>
 
-  <div class="modal" tabindex="-1" id="fpmodal" style="background-color:  rgba(0, 0, 0, 0.49);">
+   <!-- modal -->
+   <div class="modal" tabindex="-1" id="fpmodal" style="background-color:  rgba(0, 0, 0, 0.49);">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -145,7 +146,14 @@
 
     </div>
   </footer>
-
+        <script>
+    // Function to disable the anchor tag
+    function disableAnchor() {
+            var anchor = document.getElementById("myAnchor");
+            anchor.classList.add("disabled-link"); // Add the disabled-link class for styling
+        }
+  </script>
+      </script>
   <script src="script.js"></script>
   <script src="https://kit.fontawesome.com/f4e0ff3f68.js" crossorigin="anonymous"></script>
 </body>
