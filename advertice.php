@@ -63,6 +63,9 @@
         $new_price = $price + $adding_price;
         $difference = $new_price - $price;
 
+        $product_image_rs = Database::search("SELECT * FROM `product_img` WHERE `products_id` = '".$product_data["id"]."'");
+        $product_image_data = $product_image_rs->fetch_assoc();
+
 
     ?>
 
@@ -72,7 +75,7 @@
                     <div class="card">
                         <div class="justify-content-center align-items-center d-flex">
                             <span class="discount-tag">50% Off</span>
-                            <img src="resources_of_products(img)/iPhone 12_0_6698fb6a48f3b.jpeg" class="card-img-top justify-content-center align-items-center d-flex" style="width: 60%;">
+                            <img src="<?php echo $product_image_data["image_path"];?>" class="card-img-top justify-content-center align-items-center d-flex" style="width: 60%;">
                         </div>
 
                         <div class="card-body">

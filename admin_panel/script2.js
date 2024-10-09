@@ -882,7 +882,7 @@ function updateProduct() {
       }
   }
 
-  request.open("POST", "updateProductProcess.php", true);
+  request.open("POST", "../updateProductProcess.php", true);
   request.send(form);
 
 }

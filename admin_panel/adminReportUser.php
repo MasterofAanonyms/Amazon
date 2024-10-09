@@ -69,15 +69,7 @@ if (isset($_SESSION["admin"])) {
                         <tr>
                             <td><?php echo $d["user_name"]; ?></td>
                             <td><?php echo $d["email"]; ?></td>
-                            <?php
-                               $invoice_rs = Database::search("SELECT * FROM `invoice` WHERE `users_email`='".$d["email"]."'");
-                               $invoice_num = $invoice_rs->num_rows;
-                               $invoice_data = $invoice_rs->fetch_assoc();
-
-                               $product_rs = Database::search("SELECT * FROM `products` WHERE `id`='".$invoice_data["products_id"]."'");
-                               $product_num = $product_rs->num_rows;
-                               $product_data = $product_rs->fetch_assoc();
-                            ?>
+                            
                             
 
                             <td><?php echo $d["phone_no"]; ?></td>
