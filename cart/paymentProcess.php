@@ -28,6 +28,14 @@ if (isset($_POST["cart"]) && $_POST["cart"] == "true") {
     $qtyList[] = $_POST["qty"];
 }
 
+// Validate quantity values
+for ($i = 0; $i < sizeof($qtyList); $i++) {
+    if ($qtyList[$i] <= 0) {
+        echo json_encode(array("error" => "Invalid quantity. Quantity must be greater than 0.", "redirect" => "../userProfile.php"));
+        exit();
+    }
+}
+
 
 $merchantId = "1225180";
 $merchantSecret = "MTgwNzQxNzMzODE0Mjc1Nzc4NjMxODI2NTI3OTQxMjQ2MTc2NTI5";
@@ -43,6 +51,8 @@ for ($i = 0; $i < sizeof($stockList); $i++) {
     $d2 = $rs2->fetch_assoc();
     $stockQty = $d2["qty"];
 
+
+
     if ($stockQty >= $qtyList[$i]) {
         //Stock Available
         $items .= $d2["product_name"];
@@ -53,7 +63,8 @@ for ($i = 0; $i < sizeof($stockList); $i++) {
 
         $netTotal += (intval($d2["price"]) * intval($qtyList[$i]));
     } else {
-        echo ("Product has no available stock.");
+        echo json_encode(array("error" => "Product has no available stock."));
+        exit();
     }
 }
 $address_rs = Database::search("SELECT `district_id` AS district_id FROM `users_has_address` INNER JOIN `city` ON 
@@ -62,7 +73,12 @@ $address_rs = Database::search("SELECT `district_id` AS district_id FROM `users_
 
 
 $address_data = $address_rs->fetch_assoc();
-if ($address_data["district_id"] == 10) {
+if ($address_data == null) {
+    echo json_encode(array("error" => "Please set your address first.", "redirect" => "../userProfile.php"));
+    exit();
+}
+
+else if ($address_data["district_id"] == 10) {
     $ship = $d2["delevery_fee_colombo"];
     $shipping =  $ship;
 } else {

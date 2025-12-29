@@ -12,6 +12,16 @@ function checkOut() {
       var responce = request.responseText;
       // alert(responce);
       var payment = JSON.parse(responce);
+      
+      // Check if there's an error message
+      if (payment.error) {
+        alert(payment.error);
+        if (payment.redirect) {
+          window.location = payment.redirect;
+        }
+        return;
+      }
+      
       doCheckout(payment, "cart/checkoutProcess.php");
     }
   };

@@ -134,12 +134,16 @@
 
                                         $color_rs = Database::search("SELECT * FROM `color_has_products` INNER JOIN `products` ON color_has_products.products_id=products.id INNER JOIN
                                              `color` ON color_has_products.color_id=color.id WHERE products_id = '" . $cart_data["products_id"] . "'");
-                                            $color_data = $color_rs->fetch_assoc();
+                                        $color_data = $color_rs->fetch_assoc();
 
-                                        if ($address_data["district_id"] == 10) {
+                                        if ($address_data == null) {
+                                            echo "Please set your address first.<a href=\"/Amazon/userProfile.php\">From here</a>";
+                                            exit();
+                                        } else if ($address_data["district_id"] == 10) {
                                             $ship = $product_data["delevery_fee_colombo"];
                                             $shipping =  $ship;
                                         } else {
+                                            // Default shipping if no address is set
                                             $ship = $product_data["delevery_fee_other"];
                                             $shipping = $ship;
                                         }
@@ -152,14 +156,14 @@
                                     <div class="cart-item d-flex">
                                         <img src="<?php echo $product_data["image_path"]; ?>" alt="Colorado Tee" class="img-fluid mr-3">
                                         <div class="item-details">
-                                        <div class="item-name mb-2"><?php echo $product_data["product_name"]; ?></div>
+                                            <div class="item-name mb-2"><?php echo $product_data["product_name"]; ?></div>
                                             <div class="item-options mb-2">Color : <?php echo $color_data["color"]; ?></div>
                                             <div class="">Price : Rs.<?php echo $product_data["price"]; ?>.00</div>
                                             <hr class="col-5">
                                             <div class=""><b>Delevery Fee : Rs.<?php echo $shipping ?>.00</b></div>
                                             <hr class="col-5">
                                         </div>
-                                        <input type="number"   id="qty_input" class="form-control col-1" value="<?php echo $cart_data['qty']; ?>" onchange="changeQTY(<?php echo $cart_data['id']; ?>);" min="1" max="<?php echo $product_data["qty"];?>" >
+                                        <input type="number" id="qty_input" class="form-control col-1" value="<?php echo $cart_data['qty']; ?>" onchange="changeQTY(<?php echo $cart_data['id']; ?>);" min="1" max="<?php echo $product_data["qty"]; ?>">
                                         <div class="remove ml-3">
                                             <button onclick="deleteFromCart(<?php echo $cart_data['id']; ?>);" class="btn btn-sm btn-outline-danger">&times;</button>
                                         </div>
@@ -185,8 +189,8 @@
                                         <span>Rs. <?php echo $total + $shipping; ?> .00</span>
                                     </div>
                                     <div class="d-none" id="msgDiv2">
-            <div class="alert alert-success" id="msg2"></div>
-        </div>
+                                        <div class="alert alert-success" id="msg2"></div>
+                                    </div>
                                     <button class="btn btn-dark btn-block mt-2" onclick="checkOut();">Proceed to Checkout</button>
                                     <p class="text-muted text-center mt-2">Thank you for you choosing us!</p>
                                 </div>

@@ -117,10 +117,17 @@ if (isset($_SESSION["user"])) {
 
                                         $ship = 0;
 
-                                        if ($address_data["district_id"] == 10) {
+                                        if ($address_data == null) {
+                                            echo "Please set your address first.<a href=\"/Amazon/userProfile.php\">From here</a>";
+                                            exit();
+                                        } else if ($address_data["district_id"] == 10) {
                                             $ship = $product_data["delevery_fee_colombo"];
                                             $shipping = $shipping + $ship;
+                                        } else if ($address_data != null) {
+                                            $ship = $product_data["delevery_fee_other"];
+                                            $shipping = $shipping + $ship;
                                         } else {
+                                            // Default shipping if no address is set
                                             $ship = $product_data["delevery_fee_other"];
                                             $shipping = $shipping + $ship;
                                         }

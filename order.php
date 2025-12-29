@@ -236,8 +236,9 @@
                 </div>
             </section>
         <?php
+        }
 
-        }  if ($invoice_num2 > 0) {
+        if ($invoice_num2 > 0) {
 
 
         ?>
@@ -292,11 +293,34 @@
         <?php
         }
 
-
+        if ($invoice_num <= 0 && $invoice_num2 <= 0) {
+        ?>
+            <section>
+                <div class="container my-5">
+                    <div class="row m-0 col-12 my-3 bg-white p-lg-5 p-3 rounded-3">
+                        <div class="col-12 text-center">
+                            <div style="margin-bottom: 20px;">
+                                <i class="bi bi-inbox" style="font-size: 4rem; color: #ccc;"></i>
+                            </div>
+                            <h2 style="font-weight: 600; color: #333; margin-bottom: 10px;">No Orders Yet</h2>
+                            <h4 class="text-muted" style="margin-bottom: 20px;">Did not found any order from this account</h4>
+                            <p class="text-secondary" style="font-size: 16px; margin-bottom: 30px;">
+                                Your order history is empty. Start shopping to place your first order!
+                            </p>
+                            <div>
+                                <a href="index.php" class="btn btn-primary px-4 py-2" style="font-weight: 500; border-radius: 8px;">
+                                    <i class="bi bi-shop"></i> Continue Shopping
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <?php
+        }
         ?>
 
-
-
+                    <div class="row m-0 col-12 my-3 bg-white p-lg-5 p-3 rounded-3 shadow-sm">
 
 
         <!-- model -->
