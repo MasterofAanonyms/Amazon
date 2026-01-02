@@ -12,8 +12,8 @@ if($watchlist_num == 0){
 }else{
     $watchlist_data = $watchlist_rs->fetch_assoc();
 
-    Database::iud("INSERT INTO `recent`(`products_id`,`users_email`) VALUES 
-                ('".$watchlist_data["products_id"]."','".$watchlist_data["users_email"]."')");
+    Database::iud("INSERT INTO `recent`(`products_id`,`users_email`, `viwe_date`) VALUES 
+                ('".$watchlist_data["products_id"]."','".$watchlist_data["users_email"]."', NOW())");
 
     Database::iud("DELETE FROM `wichlist` WHERE `id`='".$list_id."'");
     echo ("success");
