@@ -24,12 +24,12 @@ if (isset($_GET["e"])) {
         $mail->IsSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'jkaaruth@gmail.com';
-        $mail->Password = 'drpm taha andb akzl';
+        $mail->Username = 'developer.thehan@gmail.com';
+        $mail->Password = 'bzlrdwwdyoxfsgol';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
-        $mail->setFrom('jkaaruth@gmail.com', 'Amazon');
-        $mail->addReplyTo('jkaaruth@gmail.com', 'Amazon');
+        $mail->setFrom('developer.thehan@gmail.com', 'Amazon');
+        $mail->addReplyTo('developer.thehan@gmail.com', 'Amazon');
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->Subject = 'Your Amazon verification code';
@@ -38,21 +38,21 @@ if (isset($_GET["e"])) {
         <img src="https://www.amazon.com/ref=nav_logo" alt="Embedded Image">
         <h2 style="color: #000000;text-align: center;font-weight: bold;font-size: 24px;">Amazon Forgot password Verification Code</h2>
         <hr/><br/>
-        <p style="color: #000000;line-height: 1.6; font-weight: bold;">Hi,<a>'.$email.'</a></p><br/>
-        <p style="color: #000000;line-height: 1.6; font-weight: bold; font-size: 14px;">Please enter the 6-digit code below on the email verification page: <span style="font-size: 24px; font-weight: bold;color: #f48024;">'.$code.'</span> Remember, beware of scams and keep this one-time verification code confidential.</p>
+        <p style="color: #000000;line-height: 1.6; font-weight: bold;">Hi,<a>' . $email . '</a></p><br/>
+        <p style="color: #000000;line-height: 1.6; font-weight: bold; font-size: 14px;">Please enter the 6-digit code below on the email verification page: <span style="font-size: 24px; font-weight: bold;color: #f48024;">' . $code . '</span> Remember, beware of scams and keep this one-time verification code confidential.</p>
         <p style="color: red;">If you did\'t request to reset password, please ignore this email</p>
         <p style="color: #909090;line-height: 1.6;">Thanks,<br>The Amazon Team</p>
         </div>';
-        $mail->Body    = $bodyContent;
+        $mail->Body = $bodyContent;
 
         if (!$mail->send()) {
             echo 'Verification code sending failed.';
         } else {
             echo 'Success';
         }
-    }else if(!isset($_GET["e"])){
+    } else if (!isset($_GET["e"])) {
         echo ("Please enter your Email Address in Email Field.");
     } else {
         echo ("Invalid Email Address.");
     }
-} 
+}
